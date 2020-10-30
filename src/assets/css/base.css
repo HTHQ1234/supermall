@@ -55,3 +55,7 @@ a {
 .right {
   float: right;
 }
+
+.main-tab-bar{
+  z-index: 10;
+}
