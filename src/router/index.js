@@ -1,10 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+// 使用懒加载
 const Home = () => import('views/home/Home');
 const Cart = () => import('views/cart/Cart');
 const Profile = () => import('views/profile/Profile');
 const Category = () => import('views/category/Category');
+const Detail = () => import('views/detail/Detail');
 
 Vue.use(Router);
 
@@ -33,6 +35,10 @@ const routes = [
   {
     path: '/category',
     component:Category
+  },
+  {
+    path: '/detail/:id',
+    component:Detail
   }
 ];
 

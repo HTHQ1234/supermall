@@ -6,7 +6,7 @@ export function request(config) {
     timeout: 10000
   })
 
-  instance.interceptors.request.use(config => {
+  /* instance.interceptors.request.use(config => {
     console.log(config);
     return config;
   }, err => {
@@ -20,7 +20,7 @@ export function request(config) {
   }, err => {
       console.log(err);
       return err
-  });
+  }); */
   
   return instance(config);
 }

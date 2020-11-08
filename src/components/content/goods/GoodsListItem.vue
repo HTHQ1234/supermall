@@ -1,13 +1,13 @@
 <template>
-  <div class="goods-list-item">
-    <a :href="goodsItem.link">
-      <img :src="goodsItem.show.img" alt="" />
-      <div class="goods-info">
-        <p>{{ goodsItem.title }}</p>
-        <span class="price">{{ goodsItem.price }}</span>
-        <span class="collect">⭐{{ goodsItem.cfav }}</span>
-      </div>
-    </a>
+  <div class="goods-list-item" @click="itemClick">
+    <!-- 安装插件之后的图片懒加载方式 -->
+    <!-- <img v-lazy="showImage" alt="" @load="imageLoad" /> -->
+    <img :src="showImage" alt="" @load="imageLoad" />
+    <div class="goods-info">
+      <p>{{ goodsItem.title }}</p>
+      <span class="price">{{ goodsItem.price }}</span>
+      <span class="collect">⭐{{ goodsItem.cfav }}</span>
+    </div>
   </div>
 </template>
 <script>
@@ -19,6 +19,40 @@ export default {
       default() {
         return {};
       },
+    },
+  },
+  computed: {
+    showImage: {
+      get() {
+        return this.goodsItem.image || this.goodsItem.show.img;
+      },
+      set() {},
+    },
+    /* iid:{
+      get(){
+        return this.goodsItem.item_id || this.goodsItem.iid;
+      },
+      return(){
+
+      }
+    } */
+  },
+  methods: {
+    imageLoad() {
+      /* this.$bus.$emit("itemImgLoad"); */
+
+      if (this.$route.path.indexOf("home") === 1) {
+        this.$bus.$emit("homeItemImageLoad");
+      } else if (this.$route.path.indexOf("detail") === 1) {
+        this.$bus.$emit("detailItemImageLoad");
+      }
+    },
+    itemClick() {
+      if (this.$route.path.indexOf("home") !== -1) {
+        this.$router.push("/detail/" + this.goodsItem.iid);
+      } else {
+        this.$router.push("/detail/" + this.goodsItem.item_id);
+      }
     },
   },
 };
