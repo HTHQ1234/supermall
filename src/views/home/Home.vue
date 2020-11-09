@@ -86,7 +86,7 @@ export default {
   },
   destroyed() {},
   activated() {
-    console.log(this.saveY);
+    // console.log(this.saveY);
     this.$refs.scroll.scrollTo(0, this.saveY, 0);
     this.$refs.scroll.refresh();
   },

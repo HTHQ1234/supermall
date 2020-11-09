@@ -15,5 +15,5 @@ export default {
         resolve('添加了新的商品')
       }
     });
-  }
+  },
 };

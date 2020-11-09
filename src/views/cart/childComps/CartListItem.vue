@@ -14,6 +14,7 @@
       <div class="item-desc">{{ itemInfo.desc }}</div>
       <div class="info-bottom">
         <div class="item-price left">￥{{ itemInfo.price }}</div>
+        <div class="deletebutton" @click="deleteItem(itemIndex)">删除</div>
         <div class="item-count right">x{{ itemInfo.count }}</div>
       </div>
     </div>
@@ -22,6 +23,8 @@
 <script>
 import CheckButton from "components/content/checkButton/CheckButton";
 
+import { DELETE } from "@/store/mutation-types";
+
 export default {
   name: "CartListItem",
   props: {
@@ -29,6 +32,12 @@ export default {
       type: Object,
       default() {
         return {};
+      },
+    },
+    itemIndex: {
+      type: Number,
+      default() {
+        return 0;
       },
     },
   },
@@ -41,6 +50,9 @@ export default {
     },
     checkClick() {
       this.itemInfo.checked = !this.itemInfo.checked;
+    },
+    deleteItem(index) {
+      this.$store.commit(DELETE, index);
     },
   },
 };
@@ -89,5 +101,13 @@ export default {
 
 .item-selector {
   margin: 45px 0 0 4px;
+}
+.deletebutton {
+  transform: translate(110px, -4px);
+  float: left;
+  background: var(--color-tint);
+  color: #fff;
+  border-radius: 8px;
+  padding: 4px 9px;
 }
 </style>

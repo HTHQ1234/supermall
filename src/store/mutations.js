@@ -1,4 +1,4 @@
-import {ADD_COUNTER,ADD_TO_CART} from './mutation-types'
+import {ADD_COUNTER,ADD_TO_CART,DELETE} from './mutation-types'
 
 export default {
   // mutations唯一的目的就是修改state中的状态
@@ -11,4 +11,7 @@ export default {
     payload.checked = true
     state.cartList.push(payload)
   },
+  [DELETE](state, payload) {
+    state.cartList.splice(payload,1)
+  }
 }
