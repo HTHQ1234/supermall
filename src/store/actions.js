@@ -9,10 +9,10 @@ export default {
       // 2.判断oldProduct
       if (oldProduct) { // 数量+1
         context.commit(ADD_COUNTER, oldProduct)
-        resolve('当前商品数量+1')
+        resolve('购物车数量+1')
       } else { // 添加新的商品
         context.commit(ADD_TO_CART, payload)
-        resolve('添加了新的商品')
+        resolve('加入购物车成功~')
       }
     });
   },

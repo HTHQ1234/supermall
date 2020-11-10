@@ -6,21 +6,24 @@ export function request(config) {
     timeout: 10000
   })
 
-  /* instance.interceptors.request.use(config => {
-    console.log(config);
+  // 请求拦截器
+  instance.interceptors.request.use(config => {
+    // console.log(config);
     return config;
   }, err => {
       console.log(err);
       return err
   });
 
+
+  // 响应拦截器
   instance.interceptors.response.use(res => {
-    console.log(res);
+    // console.log(res);
     return res
   }, err => {
       console.log(err);
       return err
-  }); */
+  });
   
   return instance(config);
 }

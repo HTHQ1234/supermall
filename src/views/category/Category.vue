@@ -48,12 +48,14 @@ export default {
     CategoryLeftBar,
     CategoryRightItem,
   },
+  activated() {
+    this.$refs.scroll.refresh();
+  },
   // 组件渲染完后调用
   created() {
     this.getCategoryText();
     getSubcategory(this.maitkey).then((res) => {
       this.categoryshop = res.data.data.list;
-      console.log(this.categoryshop);
     });
   },
   mounted() {
@@ -91,6 +93,7 @@ export default {
 .content1 {
   width: 115px;
   height: calc(100%);
+  overflow: hidden;
 }
 .leftbar {
   width: 115px;
@@ -101,6 +104,7 @@ export default {
 .content2 {
   flex: 1;
   height: calc(100%);
+  overflow: hidden;
 }
 .box {
   height: calc(100% - 44px - 49px);
